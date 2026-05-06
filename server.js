@@ -54,8 +54,8 @@ app.post("/contact", async (req, res) => {
 
     // ✅ Send email in background (no await)
     transporter.sendMail({
-      from: email,
-      to: process.env.EMAIL,
+      from: process.env.EMAIL
+      replyTo: email
       subject: "New Contact Message",
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     });
