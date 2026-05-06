@@ -54,11 +54,12 @@ app.post("/contact", async (req, res) => {
 
     // ✅ Send email in background (no await)
     transporter.sendMail({
-      from: process.env.EMAIL
-      replyTo: email
-      subject: "New Contact Message",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-    });
+  from: process.env.EMAIL,
+  to: process.env.EMAIL,
+  subject: "New Contact Message",
+  text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+  replyTo: email
+});
 
   } catch (error) {
     res.status(500).json({ msg: "Error sending message" });
