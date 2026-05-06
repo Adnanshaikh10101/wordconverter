@@ -59,6 +59,12 @@ app.post("/contact", async (req, res) => {
   subject: "New Contact Message",
   text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   replyTo: email
+}, (err, info) => {
+  if (err) {
+    console.log("❌ Email error:", err);
+  } else {
+    console.log("✅ Email sent:", info.response);
+  }
 });
 
   } catch (error) {
